@@ -176,15 +176,30 @@ static int[] GetArray(int size, int minValue, int maxValue)
 static int[] ProdArray(int[] Array)
 {
     int leng = Array.Length;
-    int[] Prod = new int[leng / 2];
-    for (int i = 0; i < leng / 2; i++)
+    if (leng % 2 == 0)
     {
-        Prod[i]=Array[i]*Array[leng-1-i];
+        int[] Prod = new int[leng / 2];
+        for (int i = 0; i < leng / 2; i++)
+        {
+            Prod[i] = Array[i] * Array[leng - 1 - i];
+        }
+        return Prod;
     }
-    return Prod;
+    else
+    {
+        int[] Prod = new int[leng / 2 + 1];
+        for (int i = 0; i < leng / 2; i++)
+        {
+            Prod[i] = Array[i] * Array[leng - 1 - i];
+        }
+        Prod[leng/2] = Array[leng/2];
+        return Prod;
+
+    }
+    
 }
 
-int[] Array = GetArray(6, 0, 10);
+int[] Array = GetArray(7, 0, 10);
 Console.WriteLine($"[{String.Join(',', Array)}] length {Array.Length}");
 int[] Prod = ProdArray(Array);
 Console.WriteLine($"Production [{String.Join(',', Prod)}]");
