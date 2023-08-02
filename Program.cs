@@ -1,5 +1,6 @@
 ﻿//Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9].
 //Найдите сумму отрицательных и положительных элементов массива.
+/*
 int[] Array=ArrayGet(12,-9,9);
 Console.WriteLine($"Массив: [{String.Join(',',Array)}]");
 int[] Summ=SumGet(Array);
@@ -33,3 +34,33 @@ int[] SumGet(int[] Massive)
     Result[1] = NegativeSum;
     return Result;
 }    
+*/
+// Задача 1: Напишите программу замена элементов массива: положительные элементы замените на соответствующие отрицательные, и наоборот.
+int[] Array = ArrayGet(12, -9, 9);
+Console.WriteLine($"Массив начальный: [{String.Join(',', Array)}]");
+int[] Swap = SwapGet(Array);
+Console.WriteLine($"Замена            [{String.Join(',', Swap)}]");
+
+
+// Метод возвращает массив
+
+int[] ArrayGet(int Size, int MinVal, int MaxVal)
+{
+    int[] Result = new int[Size];
+    for (int i = 0; i < Size; i++)
+    {
+        Result[i] = new Random().Next(MinVal, MaxVal + 1);
+    }
+    return Result;
+}
+
+// Метод замены элементов массива
+int[] SwapGet(int[] Massive)
+{
+    int[] Result = new int[Massive.Length];
+    for (int i = 0; i < Massive.Length; i++)
+    {
+        Result[i] = Massive[i] * (-1);
+    }
+    return Result;
+}
