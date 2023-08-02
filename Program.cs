@@ -131,7 +131,7 @@ int[] GetArray(int size, int minValue, int maxValue)
     }
     return result;
 }
-*/
+
 // Задача 3: Задайте одномерный массив из 123 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
 
 int[] array = GetArray(123, 0, 500);
@@ -158,3 +158,33 @@ int GetCount(int[] Array)
     }
     return Count;
 }
+*/
+// Задача 4: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
+// [1 2 3 4 5] -> 5 8 3
+// [6 7 3 6] -> 36 21
+
+static int[] GetArray(int size, int minValue, int maxValue)
+{
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = new Random().Next(minValue, maxValue + 1);
+    }
+    return array;
+}
+
+static int[] ProdArray(int[] Array)
+{
+    int leng = Array.Length;
+    int[] Prod = new int[leng / 2];
+    for (int i = 0; i < leng / 2; i++)
+    {
+        Prod[i]=Array[i]*Array[leng-1-i];
+    }
+    return Prod;
+}
+
+int[] Array = GetArray(6, 0, 10);
+Console.WriteLine($"[{String.Join(',', Array)}] length {Array.Length}");
+int[] Prod = ProdArray(Array);
+Console.WriteLine($"Production [{String.Join(',', Prod)}]");
